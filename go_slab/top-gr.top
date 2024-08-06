@@ -1,0 +1,14 @@
+; Include forcefield parameters
+#include "/dtemp/emslc51752/zhan051/sepcon-bdo-nwchem-gmx/myff.ff/forcefield.itp"
+#include "GRA.itp"
+#include "/dtemp/emslc51752/zhan051/sepcon-bdo-nwchem-gmx/myff.ff/23BDO.itp"
+#include "/dtemp/emslc51752/zhan051/sepcon-bdo-nwchem-gmx/myff.ff/tip4p.itp"
+#include "/dtemp/emslc51752/zhan051/sepcon-bdo-nwchem-gmx/myff.ff/ions.itp"
+
+[ system ]
+System
+
+[ molecules ]
+GRA  2
+BDO    200
+SOL               3312

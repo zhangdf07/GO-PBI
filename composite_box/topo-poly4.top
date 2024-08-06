@@ -1,0 +1,12 @@
+; 
+; 
+; 
+ 
+#include "/qfs/projects/sepcon/difan/sepcon-pbi/composite/struct-chain/topo-chain-4.itp" 
+ 
+[ system ] 
+polysiloxane
+
+[ molecules ]
+; Compound        #mols
+ chain_4     1

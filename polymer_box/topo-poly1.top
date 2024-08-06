@@ -1,0 +1,15 @@
+; 
+; 
+; 
+ 
+#include "/pic/projects/separations/zhan051/sepcon-pbi/work-gmx/struct-chain/topo-chain-1.itp" 
+#include "/pic/projects/separations/zhan051/sepcon-pbi/work-gmx/struct-chain/23BDO.itp" 
+ 
+[ system ] 
+polysiloxane in water
+
+[ molecules ]
+; Compound        #mols
+ chain_1     30
+BDO    50
+SOL               828

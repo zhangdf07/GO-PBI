@@ -1,0 +1,5 @@
+20 12 1.4 2 GRA  # pristine: nx, ny, R(C-C), Z
+76 R 38 	# OH: 10  R  5 or 2 110 -1 
+206 R 103 	# O:  12 R 8 or 1 110 130  
+354 R 177 	# H: same as H
+0 	# COOH: same as H

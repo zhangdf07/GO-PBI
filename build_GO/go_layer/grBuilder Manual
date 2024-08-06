@@ -1,0 +1,111 @@
+grBuilder Manual
+Version: 1.0
+Jun Zhang
+
+1 Introduction 
+grBuilder is a program to quickly build a graphene with or without functionalization. With a very simple input, you will get the geometry and topology of a functionalized graphene.
+
+
+2 Usage
+
+
+
+2.1 Pristine graphene
+To generate a pristine graphene, you can use the following input file, gr.inp:
+
+7 4 1.4 0. GRA  # pristine: nx, ny, R(C-C), Z
+0          # OH   
+0          # Oe
+0          # H
+0          # COOH
+
+Then run
+
+grBuilder gr.inp
+
+You will get 4 files:
+
+GRA.xyz - The coordinates in XYZ format.
+GRA.gro - The coordinates in GROMACS input format.
+GRA.itp - The topology in GROMACS topology format.
+GRA.inp - An input file to reproduce this graphene. It will be useful when you generate one randomly and want to save it.
+
+You can use these files for the following calculations.
+
+Now we explain the input file gr.inp. There are totally five lines. The first line tells grBuilder how to generate a pristine graphene. The second to fifth line tell grBuider how to functionalize graphene with hydroxyl (-OH), epoxy (-O-), hydrogen (-H), and carboxyl (-COOH), respectively. You can add comments after a "#" anywhere.
+
+In the first line, five parameters are needed:
+The first three ones: can be understood by Figure 1. 
+The fourth one: the z coordinates of the graphene.
+The fifth one: The name of the output file. This is also the residue name in the topology file.
+
+Note that, the periodic boundary conditions can be found in the last line of GRO file and the second line of XYZ file.
+
+2.2 Graphene indices
+With grBuilder, you can functionalize the graphene randomly or accurately. For accurate functionalization, you have to know the indices of the carbon atoms. You can check these with any visualization software. Below is an example using VMD. 
+
+Attention: All indices in grBuilder begins with 1! 
+
+2.3 Graphene with -OH
+To functionalize the graphene with -OH, you need to modify the second line of gr.inp. There are several ways of doing this:
+0      - No functionalization with -OH.
+12 R 8 - Randomly put 12 -OHs on the graphene, with 8 of them on the upper side.
+12 57 46 85 98 28 48 62 30 -64 -16 -9 -33 - Put 12 -OHs on the graphene. For carbon atoms 57, 46, ... 30, put -OH on the upper side; for carbon atoms 64, 16, 9, and 33, put -OH on the opposite side.
+
+So, below is a typical file:
+
+7 4 1.4 0. GRA  # pristine: nx, ny, R(C-C), Z
+12 R 8          # OH   
+0               # Oe
+0               # H
+0               # COOH
+
+2.4 Graphene with -H and -COOH
+
+The input file grammar follows the same as that for -OH. One example:
+7 4 1.4 0. GRA  # pristine: nx, ny, R(C-C), Z
+0               # OH   
+0               # Oe
+3 R 3           # H
+4 2 9 -35 -46   # COOH
+
+2.5 Graphene with -O-
+
+The only complicated aspect of this is that -O- connects with two carbon atoms, thus you need to give two indices when you want an accurate functionalization.
+
+0      - No functionalization with -O-.
+12 R 8 - Randomly put 12 -O-s on the graphene, with 8 of them on the upper side.
+4 1 2 5 6 9 10 -15 -16 - Put 4 -O-s on the graphene. On the upper side, put -O- on atoms 1 and 2, 5 and 6, 9 and 10; on the opposite side, put -O- on atoms 15 and 16.
+
+3 Applications
+3.1 Quantum chemical calculation with CP2K
+You can use the coordinates in the XYZ file for quantum chemical calculations. For example, optimize the structure with CP2K. Note that the periodic boundary conditions can be found at the second line of the XYZ file.
+
+3.2 Molecular dynamics simulation with GROMACS
+You can use the GRO and ITP file for molecular dynamics simulations with GROMACS.
+
+
+Michele Ceriotti (https://people.epfl.ch/michele.ceriotti?lang=en ); michele.ceriotti@epfl.ch École polytechnique fédérale de Lausanne (EPFL) 
+
+John Kitchin (http://kitchingroup.cheme.cmu.edu/ ); jkitchin@andrew.cmu.edu  Carnegie Mellon University
+
+Tantillo, D. J. (UC Davis); djtantillo@ucdavis.edu  Dean Tantillo  University of California, Davis
+William H. Green (MIT); whgreen@mit.edu   
+Jensen, K. F. (MIT); kfjensen@mit.edu
+
+ 
+
+902 Battelle Boulevard
+P.O. Box 999, MSIN K1-83
+Richland, WA 99352
+(509) 372-4794
+Jun.Zhang@pnnl.gov
+
+
+
+School of Chemistry and Molecular Bioscience, University of Wollongong, NSW 2500, Australia
+Molecular Horizons, University of Wollongong, NSW 2500, Australia
+
+
+Jun Zhang: 0000-0001-9093-9430
+Vassiliki-Alexandra Glezakou: 0000-0001-6028-7021
